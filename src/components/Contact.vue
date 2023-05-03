@@ -13,7 +13,23 @@
           <img :src="editSvg">
         </div>
 
-        <div v-if="!previewDocument.hasPreview" v-html="previewDocument.content"></div>
+        <div v-if="!previewDocument.hasPreview">
+          <div class="mb-name">
+            <bds-typo variant="fs-16" bold="semi-bold">{{ sanitize(this.document.name) }}</bds-typo>
+          </div>
+          <div class="mb-infos ml-infos">
+            <bds-typo tag="p" variant="fs-12" bold="regular" v-if="this.document.cellPhoneNumber">Telefone</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular" v-if="this.document.cellPhoneNumber">{{ sanitize(this.document.cellPhoneNumber) }}</bds-typo>
+          </div>
+          <div class="mb-infos ml-infos">
+            <bds-typo tag="p" variant="fs-12" bold="regular" v-if="this.document.email">E-mail</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular" v-if="this.document.email">{{ sanitize(this.document.email) }}</bds-typo>
+          </div>
+          <div class="mb-infos ml-infos">
+            <bds-typo tag="p" variant="fs-12" bold="regular" v-if="this.document.address">Endereço</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular" v-if="this.document.address">{{ sanitize(this.document.address) }}</bds-typo>
+          </div>
+        </div>
         <div v-else>
           <div v-show="!showContent" v-html="previewDocument.previewContent"></div>
           <transition name="slide-fade">
@@ -173,5 +189,17 @@ export default {
 .blip-contact-metadata {
   margin-top: -20px;
   padding: 0 10px 10px 0;
+}
+
+.mb-name {
+  margin-bottom: 16px;
+}
+
+.mb-infos {
+  margin-bottom: 4px;
+}
+
+.ml-infos {
+  margin-left: 8px;
 }
 </style>
