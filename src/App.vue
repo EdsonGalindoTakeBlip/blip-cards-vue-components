@@ -561,9 +561,20 @@ export default {
     sendContact: function() {
       this.json = JSON.stringify({
         id: '1',
-        to: '128271320123982@messenger.gw.msging.net',
-        type: 'application/vnd.lime.contact+json', // application/vnd.lime.contact+json
-        content: 'Teste envio de contato'
+        to: '128271320123982@wa.gw.msging.net',
+        type: 'application/vnd.lime.contact+json',
+        content: {
+          name: 'My Contact Name',
+          email: 'mycontact@take.net',
+          phoneNumber: '+55 33 3131-3131',
+          cellPhoneNumber: '+55 33 93131-3131',
+          address: 'Contact Address, 1000',
+          extras: {
+            org: 'Take Blip'
+          },
+          firstName: 'Contact',
+          lastName: 'Last Name'
+        }
       })
       this.send()
     },
