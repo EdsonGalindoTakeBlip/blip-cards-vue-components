@@ -119,6 +119,9 @@
         <button class="button" @click="toogleBlipGroupCard">
           CRIAR/DESTRUIR scroll
         </button>
+        <button class="button" @click="sendContact">
+          ENVIAR Contato
+        </button>
       </div>
 
       <div v-else>
@@ -552,6 +555,15 @@ export default {
           question: 'Would you recommend our product? Rate us',
           score: 0
         }
+      })
+      this.send()
+    },
+    sendContact: function() {
+      this.json = JSON.stringify({
+        id: '1',
+        to: '128271320123982@messenger.gw.msging.net',
+        type: 'application/vnd.lime.contact+json', // application/vnd.lime.contact+json
+        content: 'Teste envio de contato'
       })
       this.send()
     },
