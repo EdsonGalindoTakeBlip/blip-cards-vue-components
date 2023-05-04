@@ -15,7 +15,7 @@
 
         <div v-if="!previewDocument.hasPreview">
           <div v-if="this.document.name" class="mb-name">
-            <bds-typo variant="fs-16" bold="semi-bold">{{ sanitize(this.document.name) }}</bds-typo>
+            <bds-typo variant="fs-16" bold="semi-bold">{{ sanitize(this.document.name) | limitContentFilter(30) }}</bds-typo>
           </div>
           <div v-if="this.document.cellPhoneNumber" class="mb-infos ml-infos">
             <bds-typo tag="p" variant="fs-12" bold="regular">Telefone</bds-typo>
