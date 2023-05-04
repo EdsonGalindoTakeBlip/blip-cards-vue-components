@@ -14,20 +14,20 @@
         </div>
 
         <div v-if="!previewDocument.hasPreview">
-          <div class="mb-name">
+          <div v-if="this.document.name" class="mb-name">
             <bds-typo variant="fs-16" bold="semi-bold">{{ sanitize(this.document.name) }}</bds-typo>
           </div>
-          <div class="mb-infos ml-infos">
-            <bds-typo tag="p" variant="fs-12" bold="regular" v-if="this.document.cellPhoneNumber">Telefone</bds-typo>
-            <bds-typo tag="p" variant="fs-16" bold="regular" v-if="this.document.cellPhoneNumber">{{ sanitize(this.document.cellPhoneNumber) }}</bds-typo>
+          <div v-if="this.document.cellPhoneNumber" class="mb-infos ml-infos">
+            <bds-typo tag="p" variant="fs-12" bold="regular">Telefone</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitize(this.document.cellPhoneNumber) }}</bds-typo>
           </div>
-          <div class="mb-infos ml-infos">
-            <bds-typo tag="p" variant="fs-12" bold="regular" v-if="this.document.email">E-mail</bds-typo>
-            <bds-typo tag="p" variant="fs-16" bold="regular" v-if="this.document.email">{{ sanitize(this.document.email) }}</bds-typo>
+          <div v-if="this.document.email" class="mb-infos ml-infos">
+            <bds-typo tag="p" variant="fs-12" bold="regular">E-mail</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitize(this.document.email) }}</bds-typo>
           </div>
-          <div class="mb-infos ml-infos">
-            <bds-typo tag="p" variant="fs-12" bold="regular" v-if="this.document.address">Endereço</bds-typo>
-            <bds-typo tag="p" variant="fs-16" bold="regular" v-if="this.document.address">{{ sanitize(this.document.address) }}</bds-typo>
+          <div v-if="this.document.address" class="mb-infos ml-infos">
+            <bds-typo tag="p" variant="fs-12" bold="regular">Endereço</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitize(this.document.address) }}</bds-typo>
           </div>
         </div>
         <div v-else>
