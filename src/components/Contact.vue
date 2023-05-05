@@ -154,7 +154,7 @@ export default {
   },
   methods: {
     init: function() {
-      this.text = this.document
+      this.text = JSON.stringify(this.document)
       this.showContent = false
     },
     saveText: function($event) {
@@ -169,7 +169,7 @@ export default {
       }
 
       this.showContent = false
-      this.save(this.text)
+      this.save(JSON.parse(this.text))
     }
   }
 }
