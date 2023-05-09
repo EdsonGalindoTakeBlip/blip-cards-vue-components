@@ -15,19 +15,19 @@
 
         <div v-if="!previewDocument.hasPreview">
           <div v-if="this.document.name" class="mb-name">
-            <bds-typo variant="fs-16" bold="semi-bold">{{ sanitize(this.document.name) | limitContentFilter(30) }}</bds-typo>
+            <bds-typo variant="fs-16" bold="semi-bold">{{ sanitizeText(this.document.name) | limitContentFilter(30) }}</bds-typo>
           </div>
           <div v-if="this.document.cellPhoneNumber" class="mb-infos ml-infos">
-            <bds-typo tag="p" variant="fs-12" bold="regular">Telefone</bds-typo>
-            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitize(this.document.cellPhoneNumber) }}</bds-typo>
+            <bds-typo tag="p" variant="fs-12" bold="regular">{{ phoneLabel }}</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitizeText(this.document.cellPhoneNumber) }}</bds-typo>
           </div>
           <div v-if="this.document.email" class="mb-infos ml-infos">
-            <bds-typo tag="p" variant="fs-12" bold="regular">E-mail</bds-typo>
-            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitize(this.document.email) }}</bds-typo>
+            <bds-typo tag="p" variant="fs-12" bold="regular">{{ mailLabel }}</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitizeText(this.document.email) }}</bds-typo>
           </div>
           <div v-if="this.document.address" class="mb-infos ml-infos">
-            <bds-typo tag="p" variant="fs-12" bold="regular">Endereço</bds-typo>
-            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitize(this.document.address) }}</bds-typo>
+            <bds-typo tag="p" variant="fs-12" bold="regular">{{ addressLabel }}</bds-typo>
+            <bds-typo tag="p" variant="fs-16" bold="regular">{{ sanitizeText(this.document.address) }}</bds-typo>
           </div>
         </div>
         <div v-else>
@@ -129,6 +129,18 @@ export default {
     failedToSendMsg: {
       type: String,
       default: 'Falha ao enviar a mensagem.'
+    },
+    phoneLabel: {
+      type: String,
+      default: 'Telefone'
+    },
+    mailLabel: {
+      type: String,
+      default: 'E-mail'
+    },
+    addressLabel: {
+      type: String,
+      default: 'Endereço'
     }
   },
   computed: {
@@ -170,6 +182,9 @@ export default {
 
       this.showContent = false
       this.save(JSON.parse(this.text))
+    },
+    sanitizeText: function(text) {
+      return this.sanitize(text)
     }
   }
 }

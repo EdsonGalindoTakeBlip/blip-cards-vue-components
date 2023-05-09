@@ -332,7 +332,10 @@
           :on-metadata-edit="isMetadataReady"
           :deletable="deletable"
           :editing="isCardEditing"
-          :on-cancel="cancel" />
+          :on-cancel="cancel"
+          :phone-label="translations.phoneLabel"
+          :mail-label="translations.mailLabel"
+          :address-label="translations.addressLabel" />
 
         <unsuported-content
           v-else
