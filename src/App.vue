@@ -119,6 +119,9 @@
         <button class="button" @click="toogleBlipGroupCard">
           CRIAR/DESTRUIR scroll
         </button>
+        <button class="button" @click="sendContact">
+          ENVIAR Contato
+        </button>
       </div>
 
       <div v-else>
@@ -551,6 +554,26 @@ export default {
           scale: 'numeric5',
           question: 'Would you recommend our product? Rate us',
           score: 0
+        }
+      })
+      this.send()
+    },
+    sendContact: function() {
+      this.json = JSON.stringify({
+        id: '1',
+        to: '128271320123982@wa.gw.msging.net',
+        type: 'application/vnd.lime.contact+json',
+        content: {
+          name: 'My Contact Name',
+          email: 'mycontact@take.net',
+          phoneNumber: '+55 33 3131-3131',
+          cellPhoneNumber: '+55 33 93131-3131',
+          address: 'Contact Address, 1000',
+          extras: {
+            org: 'Take Blip'
+          },
+          firstName: 'Contact',
+          lastName: 'Last Name'
         }
       })
       this.send()
